@@ -122,7 +122,7 @@ fi
 
 echo "Installing Python requirements..."
 if [ -f "requirements.txt" ]; then
-  pip install --user -r requirements.txt
+  pip install --user -r requirements.txt --break-system-packages
 fi
 
 echo "Installing ROS dependencies..."
