@@ -77,9 +77,11 @@ if ! step_done "ros_packages"; then
   mark_step_done "ros_packages"
 fi
 
-if ! grep -q "colcon_cd.sh" ~/.bashrc; then
-  echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
+set +u
+if [ -f /usr/share/colcon_cd/function/colcon_cd.sh ]; then
+  source /usr/share/colcon_cd/function/colcon_cd.sh
 fi
+set -u
 
 echo "Sourcing ROS automatically..."
 if ! grep -q "/opt/ros/${ROS_DISTRO}/setup.bash" ~/.bashrc; then
