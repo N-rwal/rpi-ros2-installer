@@ -81,7 +81,6 @@ if ! grep -q "/opt/ros/${ROS_DISTRO}/setup.bash" ~/.bashrc; then
   echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 fi
 
-# Safely source ROS setup (temporarily disable unset checking)
 set +u
 if [ -z "${ROS_DISTRO:-}" ]; then
     echo "Error: ROS_DISTRO is not set"
@@ -91,6 +90,7 @@ if [ ! -f "/opt/ros/${ROS_DISTRO}/setup.bash" ]; then
     echo "Error: ROS setup file not found at /opt/ros/${ROS_DISTRO}/setup.bash"
     exit 1
 fi
+echo "Sourcing ROS setup (with unset checking disabled)..."
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
 set -u
 
