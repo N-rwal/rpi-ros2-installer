@@ -67,6 +67,7 @@ if ! step_done "ros_packages"; then
   sudo apt install -y \
     ros-${ROS_DISTRO}-ros-base \
     python3-colcon-common-extensions \
+    python3-colcon-cd \
     python3-rosdep \
     ros-${ROS_DISTRO}-image-tools \
     ros-${ROS_DISTRO}-vision-msgs \
@@ -74,6 +75,10 @@ if ! step_done "ros_packages"; then
     clang \
     portaudio19-dev
   mark_step_done "ros_packages"
+fi
+
+if ! grep -q "colcon_cd.sh" ~/.bashrc; then
+  echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 fi
 
 echo "Sourcing ROS automatically..."
