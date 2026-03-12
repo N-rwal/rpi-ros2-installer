@@ -1,0 +1,12 @@
+navigation:
+ros2 launch go2_robot_sdk navigation_bringup_launch.py
+
+mapping:
+ros2 launch go2_robot_sdk 2_mapping.launch.py
+
+run path:
+ros2 service call /nav_control std_srvs/srv/SetBool "{data: true}"
+***Can be different, watch log***
+
+update:
+./update.sh
